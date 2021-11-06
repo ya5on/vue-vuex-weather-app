@@ -91,4 +91,5 @@ export default {
   bottom: 5%
   left: 5%
   z-index: 1322
+  color: #5fb8b8
 </style>

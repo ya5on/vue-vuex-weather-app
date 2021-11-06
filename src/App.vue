@@ -24,12 +24,10 @@ export default {
   margin: 0
   padding: 0
   box-sizing: border-box
-
 img
   display: block
   height: auto
   max-width: 100%
-
 #app
   font-family: Helvetica, Arial, sans-serif
   color: #2c3e50

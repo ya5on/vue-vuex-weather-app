@@ -1,12 +1,23 @@
 <template>
   <div class="weather-container">
-    <div class="bg" v-if="weather.weather[0].id === 800">clear</div>
-    <div class="bg" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299">thunder</div>
-    <div class="bg" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399">drizzle</div>
-    <div class="bg" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599">rain</div>
-    <div class="bg" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699">Snow</div>
-    <div class="bg" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799">Fog</div>
-    <div class="bg" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810">Clouds</div>
+    <div v-if="new Date(weather.sys.sunrise*1000).toLocaleTimeString().slice(0,5) >= this.hour && new Date(weather.sys.sunset*1000).toLocaleTimeString().slice(0,5) <= this.hour">
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>
+    </div>
+    <div v-else>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>
+    </div>
     <div class="weather-wrap">
       <div class="sidebar">
         <div class="sidebar__search" v-if="weather.main">
@@ -20,7 +31,6 @@
         </div>
         <div class="sidebar__deatails">
           <div class="title">Weather Details</div>
-          {{ weather.weather[0].id }}
           <div class="w-box">
             <div class="key">Cloudy</div>
             <div class="value">{{weather.clouds.all}}%</div>
@@ -82,7 +92,7 @@ export default {
     return {
       weather_icon: "http://openweathermap.org/img/wn/",
       query: '',
-      error: true
+      hour: ''
     };
   },
   mounted() {},
@@ -118,8 +128,8 @@ export default {
         "Saturday",
       ];
       let d = new Date();
-      // let hours = d.getHours();
-      // let hour = hours < 10 ? "0" + hours : hours;
+      let hours = d.getHours();
+      this.hour = hours < 10 ? "0" + hours : hours;
       // let minutes = d.getMinutes();
       // let minute = minutes < 10 ? "0" + minutes : minutes;
       let month = months[d.getMonth()];
@@ -145,11 +155,11 @@ export default {
   position: absolute
   top: 0
   right: 0
-  background: rgba(255, 255, 255, .2)
+  background: rgba(255, 255, 255, .3)
   backdrop-filter: blur(10px)
   height: 100%
   width: 500px
-  color: #7E8585
+  color: #5fb8b8
   &__search
     width: 100%
     display: flex
@@ -170,7 +180,7 @@ export default {
   button
     width: 80px
     height: 80px
-    background-color: #829F9A
+    background-color: #5fb8b8
     border: none
     outline: none
     cursor: pointer
@@ -189,11 +199,11 @@ export default {
 
     .w-box
       display: flex
-      justify-content: space-between  
+      justify-content: space-between
       margin-right: 30px
       margin-bottom: 20px
       .key
-        color: #829F9A
+        color: #5fb8b8
 .weather-container
   background-color: transparent
   transition: 0.4s

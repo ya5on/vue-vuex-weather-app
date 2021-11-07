@@ -5,7 +5,6 @@ import axios from "axios"
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-    /* eslint-disable */
     state: {
         address: [],
         weather: [],

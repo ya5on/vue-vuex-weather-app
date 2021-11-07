@@ -6,10 +6,10 @@
 </template>
 
 <script>
-
+// @ is an alias to /src
 import weatherApp from "@/components/weather-app.vue";
 import geolocation from '@/components/geo-location.vue'
-/* eslint-disable */
+
 export default {
   components: {
     weatherApp, geolocation

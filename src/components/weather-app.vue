@@ -1,6 +1,6 @@
 <template>
   <div class="weather-container">
-    <div v-if="new Date(weather.sys.sunrise*1000).toLocaleTimeString().slice(0,5) >= this.hour && new Date(weather.sys.sunset*1000).toLocaleTimeString().slice(0,5) <= this.hour">
+    <div>
       <div class="bg" :style="{'background-image': 'url(' + require('../assets/clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>
       <div class="bg" :style="{'background-image': 'url(' + require('../assets/thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>
       <div class="bg" :style="{'background-image': 'url(' + require('../assets/drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>
@@ -9,15 +9,15 @@
       <div class="bg" :style="{'background-image': 'url(' + require('../assets/fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>
       <div class="bg" :style="{'background-image': 'url(' + require('../assets/clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>
     </div>
-    <div v-else>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>
-    </div>
+<!--    <div >-->
+<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>-->
+<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>-->
+<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>-->
+<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>-->
+<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>-->
+<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>-->
+<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>-->
+<!--    </div>-->
     <div class="weather-wrap">
       <div class="sidebar">
         <div class="sidebar__search" v-if="weather.main">

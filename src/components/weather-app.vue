@@ -90,7 +90,7 @@ export default {
   name: "weatherApp",
   data() {
     return {
-      weather_icon: "http://openweathermap.org/img/wn/",
+      weather_icon: "https://openweathermap.org/img/wn/",
       query: '',
       hour: ''
     };
@@ -159,7 +159,7 @@ export default {
   backdrop-filter: blur(10px)
   height: 100%
   width: 500px
-  color: #5fb8b8
+  color: #ff7272
   &__search
     width: 100%
     display: flex
@@ -176,7 +176,7 @@ export default {
     outline: none
     transition: 0.4s
     cursor: pointer
-    color: #fff
+    color: #ff7272
   button
     width: 80px
     height: 80px
@@ -190,7 +190,7 @@ export default {
     margin-top: 100px
     margin-left: 30px
     margin-right: 30px
-    color: #fff
+    color: #551A8B
     display: flex
     flex-direction: column
     .title
@@ -203,7 +203,7 @@ export default {
       margin-right: 30px
       margin-bottom: 20px
       .key
-        color: #5fb8b8
+        color: #551A8B
 .weather-container
   background-color: transparent
   transition: 0.4s

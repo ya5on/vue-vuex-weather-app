@@ -42,7 +42,7 @@ export default new Vuex.Store({
         },
         async GET_WEATHER({commit, state}) {
             const weather = await axios.get(
-                "http://api.openweathermap.org/data/2.5/weather",
+                "https://api.openweathermap.org/data/2.5/weather",
                 {
                     params: {
                         q: `${state.city}`,
@@ -56,7 +56,7 @@ export default new Vuex.Store({
         },
         async getSearchResults({commit}, query) {
             const weather = await axios.get(
-                "http://api.openweathermap.org/data/2.5/weather",{
+                "https://api.openweathermap.org/data/2.5/weather",{
                     params: {
                         q: `${query}`,
                         units: 'metric',

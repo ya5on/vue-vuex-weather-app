@@ -1,25 +1,28 @@
 <template>
   <div class="weather-container">
-    <div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>
-      <div class="bg" :style="{'background-image': 'url(' + require('../assets/clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>
+    <div v-if="this.hour >= new Date(weather.sys.sunrise*1000).toLocaleTimeString([],{hour: '2-digit'}) && this.hour <= new Date(weather.sys.sunset*1000).toLocaleTimeString([],{hour: '2-digit'})">
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>
     </div>
-<!--    <div >-->
-<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>-->
-<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>-->
-<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>-->
-<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>-->
-<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>-->
-<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>-->
-<!--      <div class="bg" :style="{'background-image': 'url(' + require('../assets/n-clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>-->
-<!--    </div>-->
+    <div v-else>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/n-clear.jpg') + ')'}" v-if="weather.weather[0].id === 800"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/n-thunderstorm.jpg') + ')'}" v-else-if="weather.weather[0].id >= 200 && weather.weather[0].id <= 299"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/n-drizzle.jpg') + ')'}" v-else-if="weather.weather[0].id >= 300 && weather.weather[0].id <= 399"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/n-rain.jpg') + ')'}" v-else-if="weather.weather[0].id >= 500 && weather.weather[0].id <= 599"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/n-snow.jpg') + ')'}" v-else-if="weather.weather[0].id >= 600 && weather.weather[0].id <= 699"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/n-fog.jpg') + ')'}" v-else-if="weather.weather[0].id >= 700 && weather.weather[0].id <= 799"></div>
+      <div class="bg" :style="{'background-image': 'url(' + require('../assets/img/n-clouds.jpg') + ')'}" v-else-if="weather.weather[0].id >= 801 && weather.weather[0].id <= 810"></div>
+    </div>
     <div class="weather-wrap">
-      <div class="sidebar">
+      <div class="btn-box">
+        <button class="btn" @click="addClass"></button>
+      </div>
+      <div class="sidebar" :class="{ active: isActive }">
         <div class="sidebar__search" v-if="weather.main">
           <input
             type="text"
@@ -27,7 +30,7 @@
             class="search-bar"
             v-model="query"
           />
-          <button><i class="fa fa-search" @click="getSearchResults(query)"></i></button>
+          <button class="button"><i class="fa fa-search" @click="getSearchResults(query)"></i></button>
         </div>
         <div class="sidebar__deatails">
           <div class="title">Weather Details</div>
@@ -45,16 +48,17 @@
           </div>
           <div class="w-box">
             <div class="key">Sunrise</div>
-            <div class="value">{{new Date(weather.sys.sunrise*1000).toLocaleTimeString("en-GB").slice(0,5)}}</div>
+            <div class="value">{{this.sunrise}}</div>
           </div>
           <div class="w-box">
             <div class="key">Sunset</div>
-            <div class="value">{{new Date(weather.sys.sunset*1000).toLocaleTimeString("en-GB").slice(0,5)}}</div>
+            <div class="value">{{this.sunset}}</div>
           </div>
           <div class="w-box">
             <div class="key">Visibility</div>
             <div class="value">{{weather.visibility}}</div>
           </div>
+          <button class="btn-close" @click="removeClass">&#9932;</button>
         </div>
       </div>
       <div class="weather-info" v-if="weather.main">
@@ -92,10 +96,12 @@ export default {
     return {
       weather_icon: "https://openweathermap.org/img/wn/",
       query: '',
-      hour: ''
+      hour: '',
+      isActive: false,
+      sunrise: '',
+      sunset: ''
     };
   },
-  mounted() {},
   computed: {
     weather(){
       return this.$store.getters.WEATHER
@@ -103,6 +109,12 @@ export default {
   },
   methods: {
     ...mapActions(['getSearchResults']),
+    addClass() {
+      this.isActive = !this.isActive
+    },
+    removeClass() {
+      this.isActive = false
+    },
     todaysDate() {
       const months = [
         "Jan",
@@ -136,6 +148,8 @@ export default {
       let day = days[d.getDay()];
       let date = d.getDate();
       let year = d.getFullYear() % 100;
+      this.sunrise = new Date(this.weather.sys.sunrise*1000).toLocaleTimeString().slice(0,5);
+      this.sunset = new Date(this.weather.sys.sunset*1000).toLocaleTimeString().slice(0,5);
       return `${day}, ${date} ${month} '${year}`;
     },
   },
@@ -152,7 +166,7 @@ export default {
   background-size: cover
 
 .sidebar
-  position: absolute
+  position: fixed
   top: 0
   right: 0
   background: rgba(255, 255, 255, .3)
@@ -160,6 +174,9 @@ export default {
   height: 100%
   width: 500px
   color: #ff7272
+  transition: all .5s ease-in-out
+  +lg(width, 320px)
+  +lg(right, -320px)
   &__search
     width: 100%
     display: flex
@@ -177,7 +194,8 @@ export default {
     transition: 0.4s
     cursor: pointer
     color: #ff7272
-  button
+    +lg(width, 60%)
+  .button
     width: 80px
     height: 80px
     background-color: #5fb8b8
@@ -196,7 +214,6 @@ export default {
     .title
       font-size: 20px
       margin-bottom: 30px
-
     .w-box
       display: flex
       justify-content: space-between
@@ -216,6 +233,54 @@ export default {
   display: flex
   justify-content: flex-start
   align-items: center
+  .btn-box
+    position: absolute
+    top: 15px
+    right: 20px
+    width: 50px
+    height: 50px
+    justify-content: center
+    align-items: center
+    display: none
+    +lg(display, flex)
+.btn
+  position: relative
+  font-size: 16px
+  background-color: #5fb8b8
+  border: none
+  cursor: pointer
+  width: 40px
+  height: 2px
+  &:before,
+  &:after
+    content: ''
+    position: absolute
+    width: 40px
+    height: 2px
+    background-color: #5fb8b8
+  &:before
+    top: 10px
+    left: 0
+  &:after
+    bottom: 10px
+    left: 0
+.btn-close
+  font-size: 16px
+  color: #5fb8b8
+  bottom: 30px
+  right: 50%
+  transform: translateX(50%)
+  position: absolute
+  z-index: 10
+  width: 50px
+  height: 50px
+  justify-content: center
+  align-items: center
+  border-radius: 50%
+  border: 2px solid #5fb8b8
+  background-color: transparent!important
+  display: none
+  +lg(display, block)
 .weather-info
   display: flex
   justify-content: center
@@ -223,6 +288,8 @@ export default {
   width: 100%
   max-width: 900px
   color: #fff
+  +sm(flex-direction, column)
+  +sm(align-items, center)
 .weather-box
   text-align: center
   display: flex
@@ -249,7 +316,12 @@ export default {
   flex-direction: column
   justify-content: center
   text-align: center
+  .icon
+    margin: 0 auto
   .weather
     font-size: 18px
     text-transform: capitalize
+
+.active
+  right: 0
 </style>

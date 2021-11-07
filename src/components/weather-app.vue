@@ -26,7 +26,7 @@
         <div class="sidebar__search" v-if="weather.main">
           <input
             type="text"
-            placeholder="Search..."
+            placeholder="Search city..."
             class="search-bar"
             v-model="query"
           />
@@ -58,7 +58,7 @@
             <div class="key">Visibility</div>
             <div class="value">{{weather.visibility}}</div>
           </div>
-          <button class="btn-close" @click="removeClass">&#9932;</button>
+          <button class="btn-close" @click="removeClass">×</button>
         </div>
       </div>
       <div class="weather-info" v-if="weather.main">
@@ -265,7 +265,7 @@ export default {
     bottom: 10px
     left: 0
 .btn-close
-  font-size: 16px
+  font-size: 26px
   color: #5fb8b8
   bottom: 30px
   right: 50%
@@ -290,6 +290,7 @@ export default {
   color: #fff
   +sm(flex-direction, column)
   +sm(align-items, center)
+  +sm(margin-top, -100px)
 .weather-box
   text-align: center
   display: flex

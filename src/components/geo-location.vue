@@ -91,4 +91,5 @@ export default {
   bottom: 5%
   left: 5%
   color: #5fb8b8
+  +xs(bottom, 3%)
 </style>

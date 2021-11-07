@@ -4,8 +4,14 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --skip-plugins @vue/cli-plugin-eslint",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": false,
+      "node": false
+    }
   },
   "dependencies": {
     "axios": "^0.24.0",

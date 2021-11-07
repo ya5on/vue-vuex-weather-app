@@ -44,7 +44,7 @@
 </template>
 
 <script>
-
+/* eslint-disable */
 export default {
   name: "geo-loc",
   data() {

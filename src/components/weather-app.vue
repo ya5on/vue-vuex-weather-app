@@ -87,6 +87,7 @@
 import {mapActions} from "vuex";
 
 export default {
+  /* eslint-disable */
   name: "weatherApp",
   data() {
     return {

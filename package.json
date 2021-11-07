@@ -7,12 +7,6 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
-  "eslintConfig": {
-    "env": {
-      "browser": false,
-      "node": false
-    }
-  },
   "dependencies": {
     "axios": "^0.24.0",
     "core-js": "^3.6.5",

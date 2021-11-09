@@ -87,7 +87,7 @@ export default {
 
 <style scoped lang="sass">
 .location
-  position: absolute
+  position: fixed
   bottom: 5%
   left: 5%
   color: #5fb8b8

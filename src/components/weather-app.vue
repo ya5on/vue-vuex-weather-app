@@ -270,7 +270,7 @@ export default {
   bottom: 30px
   right: 50%
   transform: translateX(50%)
-  position: absolute
+  position: fixed
   z-index: 10
   width: 50px
   height: 50px

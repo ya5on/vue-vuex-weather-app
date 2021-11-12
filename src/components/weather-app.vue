@@ -164,6 +164,7 @@ export default {
   z-index: -1
   background-repeat: no-repeat
   background-size: cover
+  background-position: center
 
 .sidebar
   position: fixed
